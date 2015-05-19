@@ -13,4 +13,6 @@
          [:p "Error loading data"])
        [:ul (for [aco @acos]
               ^{:key (:uuid aco)}
-              [:li (:title aco) " [" (:uuid aco) "]"])]])))
+              [:li [:a {:href "#" :on-click #(do (dispatch [:single/request-aco (:uuid aco)])
+                                                 (dispatch [:set-active-panel :single]))}
+                    (:title aco)]])]])))

@@ -1,6 +1,7 @@
 (ns aco.client.views
   (:require [re-frame.core :as re-frame :refer [dispatch subscribe]]
-            [aco.index.views :refer [index-page]]))
+            [aco.index.views :refer [index-page]]
+            [aco.single.views :refer [single-page]]))
 
 (defn about-page []
   [:h2 "about page"])
@@ -16,4 +17,5 @@
         [:a {:href "#" :on-click #(dispatch [:set-active-panel :about])} "about"]]
        (condp = @active-panel
          :index [index-page]
+         :single [single-page]
          :about [about-page])])))

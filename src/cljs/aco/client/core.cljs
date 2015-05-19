@@ -3,6 +3,8 @@
             [re-frame.core :as re-frame :refer [dispatch-sync dispatch]]
             [aco.index.handlers :as index-handlers]
             [aco.index.subs :as index-subs]
+            [aco.single.handlers :as single-handlers]
+            [aco.single.subs :as single-subs]
             [aco.client.handlers :as handlers]
             [aco.client.subs :as subs]
             [aco.client.views :refer [current-page]]))
