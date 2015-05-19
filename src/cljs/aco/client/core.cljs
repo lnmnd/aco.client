@@ -1,6 +1,8 @@
 (ns aco.client.core
   (:require [reagent.core :as reagent :refer [atom]]
-            [re-frame.core :as re-frame :refer [dispatch-sync]]
+            [re-frame.core :as re-frame :refer [dispatch-sync dispatch]]
+            [aco.index.handlers :as index-handlers]
+            [aco.index.subs :as index-subs]
             [aco.client.handlers :as handlers]
             [aco.client.subs :as subs]
             [aco.client.views :refer [current-page]]))
@@ -10,4 +12,5 @@
 
 (defn init! []
   (dispatch-sync [:init])
+  (dispatch [:index/request-acos])
   (mount-root))
