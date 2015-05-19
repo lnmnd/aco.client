@@ -16,7 +16,9 @@
                  [compojure "1.3.3"]
                  [hiccup "1.0.5"]
                  [environ "1.0.0"]
-                 [org.clojure/clojurescript "0.0-3255" :scope "provided"]]
+                 [org.clojure/clojurescript "0.0-3255" :scope "provided"]
+                 [re-frame "0.4.0"]
+                 [cljs-ajax "0.3.11"]]
 
   :plugins [[lein-ring "0.9.1"]
             [lein-environ "1.0.0"]
