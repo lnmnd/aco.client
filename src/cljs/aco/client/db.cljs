@@ -1,4 +1,6 @@
-(ns aco.client.db)
+(ns aco.client.db
+  (:require [aco.index.db :as index]))
 
 (def default-value
-  {:active-panel :index})
+  {:active-panel :index
+   :index index/default-value})
