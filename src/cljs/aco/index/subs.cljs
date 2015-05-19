@@ -9,6 +9,12 @@
      (reaction (:loading @index)))))
 
 (register-sub
+ :index/error-loading
+ (fn [db]
+   (let [index (reaction (:index @db))]
+     (reaction (:error-loading @index)))))
+
+(register-sub
  :index/acos
  (fn [db]
    (let [index (reaction (:index @db))]

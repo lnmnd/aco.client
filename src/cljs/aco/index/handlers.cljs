@@ -10,7 +10,7 @@
     {:response-format :json
      :keywords? true
      :handler #(dispatch [:index/process-acos %])
-     :error-handler #(println "do nothing")})
+     :error-handler #(dispatch [:index/process-error %])})
    (assoc-in db [:index :loading] true)))
 
 (register-handler
@@ -19,3 +19,10 @@
    (-> db
        (assoc-in [:index :loading] false)
        (assoc-in [:index :acos] res))))
+
+(register-handler
+ :index/process-error
+ (fn [db [_ res]]
+   (-> db
+       (assoc-in [:index :loading] false)
+       (assoc-in [:index :error-loading] true))))
