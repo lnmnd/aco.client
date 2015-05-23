@@ -8,9 +8,9 @@
     (fn []
       [:div
        (when @loading
-         [:p "Loading..."])
+         [:p.bg-info "Loading..."])
        (when @error-loading
-         [:p "Error loading data"])
+         [:p.bg-danger "Error loading data"])
        [:h2 (:title @aco)]
        [:p (take 10 (:date (:date @aco)))]
        [:p (:description @aco)]

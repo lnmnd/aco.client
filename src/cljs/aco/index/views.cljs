@@ -8,9 +8,9 @@
     (fn []
       [:div
        (when @loading
-         [:p "Loading..."])
+         [:p.bg-info "Loading..."])
        (when @error-loading
-         [:p "Error loading data"])
+         [:p.bg-danger "Error loading data"])
        [:ul (for [aco @acos]
               ^{:key (:uuid aco)}
               [:li [:a {:href "#" :on-click #(do (dispatch [:single/request-aco (:uuid aco)])
