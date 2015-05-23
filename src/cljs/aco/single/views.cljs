@@ -11,9 +11,11 @@
          [:p.bg-info "Loading..."])
        (when @error-loading
          [:p.bg-danger "Error loading data"])
-       [:h2 (:title @aco)]
-       [:p (take 10 (:date (:date @aco)))]
-       [:p (:description @aco)]
+       (when (and (not @loading) (not @error-loading))
+         [:div
+          [:h2 (:title @aco)]
+          [:p (take 10 (:date (:date @aco)))]
+          [:p (:description @aco)]])
        [:p [:a {:href "#"
                 :on-click #(do (dispatch [:index/request-acos])
                                (dispatch [:set-active-panel :index]))}
