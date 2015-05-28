@@ -15,7 +15,10 @@
          [:div
           [:h2 (:title @aco)]
           [:p (take 10 (:date (:date @aco)))]
-          [:p (:description @aco)]])
+          [:p (:description @aco)]
+          [:ul (for [article (:articles @aco)]
+              ^{:key (:url article)}
+              [:li [:a {:href "#"} (:title article)]])]])
        [:p [:a {:href "#"
                 :on-click #(do (dispatch [:index/request-acos])
                                (dispatch [:set-active-panel :index]))}
