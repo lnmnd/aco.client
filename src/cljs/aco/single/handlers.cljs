@@ -11,7 +11,9 @@
      :keywords? true
      :handler #(dispatch [:single/process-aco %])
      :error-handler #(dispatch [:single/process-error %])})
-   (assoc-in db [:single :loading] true)))
+   (-> db
+       (assoc-in [:single :loading] true)
+       (assoc-in [:single :selected-article] nil))))
 
 (register-handler
  :single/process-aco
