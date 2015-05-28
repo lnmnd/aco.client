@@ -33,7 +33,8 @@
             (let [article (find-by-url @selected-article (:articles @aco))]
               [:div
                [:h2 (:title article)]
-               [:pre (:url article)]]))])
+               [:pre (:url article)]
+               [:div {:dangerouslySetInnerHTML {:__html (:content article)}}]]))])
        [:p [:a {:href "#"
                 :on-click #(do (dispatch [:index/request-acos])
                                (dispatch [:set-active-panel :index]))}
