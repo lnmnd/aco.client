@@ -4,7 +4,8 @@
 (defn single-page []
   (let [loading (subscribe [:single/loading])
         error-loading (subscribe [:single/error-loading])
-        aco (subscribe [:single/aco])]
+        aco (subscribe [:single/aco])
+        selected-article (subscribe [:single/selected-article])]
     (fn []
       [:div
        (when @loading
@@ -18,7 +19,9 @@
           [:p (:description @aco)]
           [:ul (for [article (:articles @aco)]
               ^{:key (:url article)}
-              [:li [:a {:href "#"} (:title article)]])]])
+              [:li [:a {:href "#" :on-click #(dispatch [:single/set-selected-article (:url article)])}
+                    (:title article)]])]
+          @selected-article])
        [:p [:a {:href "#"
                 :on-click #(do (dispatch [:index/request-acos])
                                (dispatch [:set-active-panel :index]))}

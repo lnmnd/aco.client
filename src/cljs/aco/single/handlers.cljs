@@ -26,3 +26,8 @@
    (-> db
        (assoc-in [:single :loading] false)
        (assoc-in [:single :error-loading] true))))
+
+(register-handler
+ :single/set-selected-article
+ (fn [db [_ index]]
+   (assoc-in db [:single :selected-article] index)))

@@ -19,3 +19,9 @@
  (fn [db]
    (let [single (reaction (:single @db))]
      (reaction (:aco @single)))))
+
+(register-sub
+ :single/selected-article
+ (fn [db]
+   (let [single (reaction (:single @db))]
+     (reaction (:selected-article @single)))))

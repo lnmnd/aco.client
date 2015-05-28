@@ -3,4 +3,5 @@
 (def default-value
   {:loading false
    :error-loading false
-   :aco []})
+   :aco []
+   :selected-article nil})
