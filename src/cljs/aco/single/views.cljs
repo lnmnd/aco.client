@@ -22,7 +22,10 @@
          [:div
           [:h2 (:title @aco)]
           [:p (take 10 (:date (:date @aco)))]
+          [:p (for [tag (interpose ", " (:tags @aco))]
+                tag)]
           [:p (:description @aco)]
+
           [:ul (for [article (:articles @aco)]
                  ^{:key (:url article)}
                  [:li [:a {:href "#" :on-click #(dispatch [:single/set-selected-article (:url article)])}
