@@ -12,7 +12,8 @@
       [:div
        [:h1 "Article Collector"]
        [:div
-        [:a {:href "#" :on-click #(dispatch [:set-active-panel :index])} "index"]
+        [:a {:href "#" :on-click #(do (dispatch [:index/request-acos])
+                                      (dispatch [:set-active-panel :index]))} "index"]
         " "
         [:a {:href "#" :on-click #(dispatch [:set-active-panel :about])} "about"]]
        (condp = @active-panel
