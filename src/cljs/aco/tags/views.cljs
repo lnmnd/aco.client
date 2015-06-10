@@ -4,7 +4,7 @@
 (defn tags-page []
   (let [tags (subscribe [:tags/tags])
         loading (subscribe [:tags/loading])
-        error-loading (subscribe [:index/error-loading])]
+        error-loading (subscribe [:tags/error-loading])]
     (fn []
       [:div
        (when @loading
