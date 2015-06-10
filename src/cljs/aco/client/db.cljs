@@ -5,4 +5,4 @@
 (def default-value
   {:active-panel :index
    :index index/default-value
-   :tags tags/default-valuep})
+   :tags tags/default-value})
