@@ -25,6 +25,7 @@
           [:p (for [tag (interpose ", " (:tags @aco))]
                 (if (= tag ", ")
                   ", "
+                  ^{:key tag}
                   [:a {:href "#"
                        :on-click #(do (dispatch [:tags/request-tags])
                                       (dispatch [:tags/set-selected-tag tag])
