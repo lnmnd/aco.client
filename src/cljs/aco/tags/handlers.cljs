@@ -39,7 +39,7 @@
     (str "http://localhost:8080/api/tags/" tag)
     {:response-format :json
      :keywords? true
-     :handler #(dispatch [:tags/process-tag-acos %])
+     :handler #(dispatch [:tags/process-tag-acos tag %])
      :error-handler #(dispatch [:tags/process-error %])})
    (-> db
        (assoc-in [:tags :error-loading] false)
@@ -47,6 +47,7 @@
 
 (register-handler
  :tags/process-tag-acos
- (fn [db [_ res]]
+ (fn [db [_ tag res]]
+   (println "process" tag)
    (println res)
    db))
