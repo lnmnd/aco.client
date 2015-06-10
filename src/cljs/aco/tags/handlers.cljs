@@ -21,7 +21,9 @@
  (fn [db [_ res]]
    (-> db
        (assoc-in [:tags :loading] false)
-       (assoc-in [:tags :tags] res))))
+       (assoc-in [:tags :tags] (map (fn [tag]
+                                      {:name tag
+                                       :acos nil}) res)))))
 
 (register-handler
  :tags/process-error

@@ -12,5 +12,5 @@
        (when @error-loading
          [:p.bg-danger "Error loading data"])
        [:ul (for [tag @tags]
-              ^{:key tag}
-              [:li tag])]])))
+              ^{:key (:name tag)}
+              [:li (:name tag)])]])))
