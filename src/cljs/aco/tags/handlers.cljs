@@ -47,11 +47,17 @@
 
 (register-handler
  :tags/process-tag-acos
- (fn [db [_ tag res]]
-   (println "process" tag)
-   (println res)
+ (fn [db [_ tag-name res]]
    (-> db
-       (assoc-in [:tags :loading] false))))
+       (assoc-in [:tags :loading] false)
+       (assoc-in [:tags :tags]
+                 (map (fn [tag]
+                        {:name (:name tag)
+                         :acos (if (and (:selected-tag (:tags db))
+                                        (= (:selected-tag (:tags db)) tag-name))
+                                 res
+                                 nil)})
+                      (:tags (:tags db)))))))
 
 (register-handler
  :tags/set-selected-tag
