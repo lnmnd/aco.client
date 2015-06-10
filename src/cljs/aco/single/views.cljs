@@ -22,7 +22,17 @@
          [:div
           [:h2 (:title @aco)]
           [:p (take 10 (:date (:date @aco)))]
+          [:p (for [tag (interpose ", " (:tags @aco))]
+                (if (= tag ", ")
+                  ", "
+                  [:a {:href "#"
+                       :on-click #(do (dispatch [:tags/request-tags])
+                                      (dispatch [:tags/set-selected-tag tag])
+                                      (dispatch [:tags/request-tag-acos tag])
+                                      (dispatch [:set-active-panel :tags]))}
+                   tag]))]
           [:p (:description @aco)]
+
           [:ul (for [article (:articles @aco)]
                  ^{:key (:url article)}
                  [:li [:a {:href "#" :on-click #(dispatch [:single/set-selected-article (:url article)])}
