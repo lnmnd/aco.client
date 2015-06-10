@@ -19,5 +19,10 @@
                                        (dispatch [:tags/request-tag-acos (:name tag)]))}
                     (if (and @selected-tag
                              (= @selected-tag (:name tag)))
-                      [:strong (:name tag)]
+                      [:div
+                       [:strong (:name tag)]
+                       (when (:acos tag)
+                         [:ul (for [aco (:acos tag)]
+                                ^{:key (:uuid aco)}
+                                [:li (:title aco)])])]
                       (:name tag))]])]])))
