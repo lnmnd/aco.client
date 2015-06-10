@@ -31,3 +31,22 @@
    (-> db
        (assoc-in [:tags :loading] false)
        (assoc-in [:tags :error-loading] true))))
+
+(register-handler
+ :tags/request-tag-acos
+ (fn [db [_ tag]]
+   (GET
+    (str "http://localhost:8080/api/tags/" tag)
+    {:response-format :json
+     :keywords? true
+     :handler #(dispatch [:tags/process-tag-acos %])
+     :error-handler #(dispatch [:tags/process-error %])})
+   (-> db
+       (assoc-in [:tags :error-loading] false)
+       (assoc-in [:tags :loading] true))))
+
+(register-handler
+ :tags/process-tag-acos
+ (fn [db [_ res]]
+   (println res)
+   db))

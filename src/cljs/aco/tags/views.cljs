@@ -13,4 +13,6 @@
          [:p.bg-danger "Error loading data"])
        [:ul (for [tag @tags]
               ^{:key (:name tag)}
-              [:li (:name tag)])]])))
+              [:li [:a {:href "#"
+                        :on-click #(dispatch [:tags/request-tag-acos (:name tag)])}
+                    (:name tag)]])]])))
