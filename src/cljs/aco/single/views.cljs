@@ -34,12 +34,12 @@
                    tag]))]
           [:p (:description @aco)]
 
-          [:ul (for [article (:articles @aco)]
-                 ^{:key (:url article)}
-                 [:li [:a {:href "#" :on-click #(dispatch [:single/set-selected-article (:url article)])}
-                       (if (= @selected-article (:url article))
-                         [:strong (:title article)]
-                         (:title article))]])]
+          [:ul (doall (for [article (:articles @aco)]
+                        ^{:key (:url article)}
+                        [:li [:a {:href "#" :on-click #(dispatch [:single/set-selected-article (:url article)])}
+                              (if (= @selected-article (:url article))
+                                [:strong (:title article)]
+                                (:title article))]]))]
           (when @selected-article
             (let [article (find-by-url @selected-article (:articles @aco))]
               [:div
