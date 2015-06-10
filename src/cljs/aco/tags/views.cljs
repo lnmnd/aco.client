@@ -21,7 +21,9 @@
                       (when (:acos tag)
                         [:ul (for [aco (:acos tag)]
                                ^{:key (:uuid aco)}
-                               [:li (:title aco)])])]
+                               [:li [:a {:href "#" :on-click #(do (dispatch [:single/request-aco (:uuid aco)])
+                                                                  (dispatch [:set-active-panel :single]))}
+                                     (:title aco)]])])]
                      [:a {:href "#"
                           :on-click #(do (dispatch [:tags/set-selected-tag (:name tag)])
                                          (dispatch [:tags/request-tag-acos (:name tag)]))}
