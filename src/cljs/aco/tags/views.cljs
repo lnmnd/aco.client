@@ -14,15 +14,15 @@
          [:p.bg-danger "Error loading data"])
        [:ul (for [tag @tags]
               ^{:key (:name tag)}
-              [:li [:a {:href "#"
-                        :on-click #(do (dispatch [:tags/set-selected-tag (:name tag)])
-                                       (dispatch [:tags/request-tag-acos (:name tag)]))}
-                    (if (and @selected-tag
-                             (= @selected-tag (:name tag)))
-                      [:div
-                       [:strong (:name tag)]
-                       (when (:acos tag)
-                         [:ul (for [aco (:acos tag)]
-                                ^{:key (:uuid aco)}
-                                [:li (:title aco)])])]
-                      (:name tag))]])]])))
+              [:li (if (and @selected-tag
+                            (= @selected-tag (:name tag)))
+                     [:div
+                      [:strong (:name tag)]
+                      (when (:acos tag)
+                        [:ul (for [aco (:acos tag)]
+                               ^{:key (:uuid aco)}
+                               [:li (:title aco)])])]
+                     [:a {:href "#"
+                          :on-click #(do (dispatch [:tags/set-selected-tag (:name tag)])
+                                         (dispatch [:tags/request-tag-acos (:name tag)]))}
+                      (:name tag)])])]])))
