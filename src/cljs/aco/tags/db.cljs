@@ -3,4 +3,5 @@
 (def default-value
   {:loading false
    :error-loading false
-   :tags []})
+   :tags []
+   :selected-tag nil})

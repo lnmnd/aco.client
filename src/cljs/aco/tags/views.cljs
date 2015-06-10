@@ -3,6 +3,7 @@
 
 (defn tags-page []
   (let [tags (subscribe [:tags/tags])
+        selected-tag (subscribe [:tags/selected-tag])
         loading (subscribe [:tags/loading])
         error-loading (subscribe [:tags/error-loading])]
     (fn []
@@ -14,5 +15,9 @@
        [:ul (for [tag @tags]
               ^{:key (:name tag)}
               [:li [:a {:href "#"
-                        :on-click #(dispatch [:tags/request-tag-acos (:name tag)])}
-                    (:name tag)]])]])))
+                        :on-click #(do (dispatch [:tags/set-selected-tag (:name tag)])
+                                       (dispatch [:tags/request-tag-acos (:name tag)]))}
+                    (if (and @selected-tag
+                             (= @selected-tag (:name tag)))
+                      [:strong (:name tag)]
+                      (:name tag))]])]])))

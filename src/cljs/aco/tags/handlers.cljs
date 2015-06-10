@@ -52,3 +52,9 @@
    (println res)
    (-> db
        (assoc-in [:tags :loading] false))))
+
+(register-handler
+ :tags/set-selected-tag
+ (fn [db [_ tag]]
+   (-> db
+       (assoc-in [:tags :selected-tag] tag))))

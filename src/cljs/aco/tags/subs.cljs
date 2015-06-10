@@ -20,3 +20,9 @@
  (fn [db]
    (let [tags (reaction (:tags @db))]
      (reaction (:error-loading @tags)))))
+
+(register-sub
+ :tags/selected-tag
+ (fn [db]
+   (let [tags (reaction (:tags @db))]
+     (reaction (:selected-tag @tags)))))
