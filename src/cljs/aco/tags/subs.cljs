@@ -7,3 +7,16 @@
  (fn [db]
    (let [tags (reaction (:tags @db))]
      (reaction (:tags @tags)))))
+
+(register-sub
+ :tags/loading
+ (fn [db]
+   (let [tags (reaction (:tags @db))]
+     (reaction (:loading @tags)))))
+
+
+(register-sub
+ :tags/error-loading
+ (fn [db]
+   (let [tags (reaction (:tags @db))]
+     (reaction (:error-loading @tags)))))

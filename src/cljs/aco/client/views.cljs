@@ -16,7 +16,8 @@
         [:a {:href "#" :on-click #(do (dispatch [:index/request-acos])
                                       (dispatch [:set-active-panel :index]))} "index"]
         " "
-        [:a {:href "#" :on-click #(dispatch [:set-active-panel :tags])} "tags"]
+        [:a {:href "#" :on-click #(do (dispatch [:tags/request-tags])
+                                      (dispatch [:set-active-panel :tags]))} "tags"]
         " "
         [:a {:href "#" :on-click #(dispatch [:set-active-panel :about])} "about"]]
        (condp = @active-panel
