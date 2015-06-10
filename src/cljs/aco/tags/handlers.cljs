@@ -50,4 +50,5 @@
  (fn [db [_ tag res]]
    (println "process" tag)
    (println res)
-   db))
+   (-> db
+       (assoc-in [:tags :loading] false))))
