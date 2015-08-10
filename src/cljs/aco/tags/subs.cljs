@@ -14,7 +14,6 @@
    (let [tags (reaction (:tags @db))]
      (reaction (:loading @tags)))))
 
-
 (register-sub
  :tags/error-loading
  (fn [db]

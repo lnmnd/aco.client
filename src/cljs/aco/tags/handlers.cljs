@@ -6,15 +6,14 @@
  :tags/request-tags
  (fn [db]
    (GET
-    (str "http://localhost:8080/api/tags")
-    {:response-format :json
-     :keywords? true
-     :handler #(dispatch [:tags/process-tags %])
-     :error-handler #(dispatch [:tags/process-error %])})
+     (str "http://localhost:8080/api/tags")
+     {:response-format :json
+      :keywords? true
+      :handler #(dispatch [:tags/process-tags %])
+      :error-handler #(dispatch [:tags/process-error %])})
    (-> db
        (assoc-in [:tags :error-loading] false)
        (assoc-in [:tags :loading] true))))
-
 
 (register-handler
  :tags/process-tags
@@ -36,11 +35,11 @@
  :tags/request-tag-acos
  (fn [db [_ tag]]
    (GET
-    (str "http://localhost:8080/api/tags/" tag)
-    {:response-format :json
-     :keywords? true
-     :handler #(dispatch [:tags/process-tag-acos tag %])
-     :error-handler #(dispatch [:tags/process-error %])})
+     (str "http://localhost:8080/api/tags/" tag)
+     {:response-format :json
+      :keywords? true
+      :handler #(dispatch [:tags/process-tag-acos tag %])
+      :error-handler #(dispatch [:tags/process-error %])})
    (-> db
        (assoc-in [:tags :error-loading] false)
        (assoc-in [:tags :loading] true))))

@@ -6,11 +6,11 @@
  :single/request-aco
  (fn [db [_ uuid]]
    (GET
-    (str "http://localhost:8080/api/article-collections/" uuid)
-    {:response-format :json
-     :keywords? true
-     :handler #(dispatch [:single/process-aco %])
-     :error-handler #(dispatch [:single/process-error %])})
+     (str "http://localhost:8080/api/article-collections/" uuid)
+     {:response-format :json
+      :keywords? true
+      :handler #(dispatch [:single/process-aco %])
+      :error-handler #(dispatch [:single/process-error %])})
    (-> db
        (assoc-in [:single :loading] true)
        (assoc-in [:single :selected-article] nil))))
