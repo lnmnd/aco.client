@@ -61,5 +61,4 @@
 (register-handler
  :tags/set-selected-tag
  (fn [db [_ tag]]
-   (-> db
-       (assoc-in [:tags :selected-tag] tag))))
+   (assoc-in db [:tags :selected-tag] tag)))
